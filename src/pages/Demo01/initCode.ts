@@ -30,7 +30,7 @@ const scene = new THREE.Scene();
     camera.position.set(200, 200, 200);
     camera.lookAt(0, 0, 0);
 
-    renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer();
     renderer.setSize(width, height)
     const controls = new OrbitControls(camera, renderer.domElement);
     function animate() {

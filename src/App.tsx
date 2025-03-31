@@ -6,41 +6,46 @@ import { useEffect, useRef, useState } from "react";
 import MonacoEditor from "./components/monacoEditor";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { GUI } from "three/examples/jsm/libs/lil-gui.module.min";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 import initCodeDemo1 from "./pages/Demo01/initCode";
+import initCodeDemo2 from "./pages/Demo02/initCode";
 const items: MenuItem[] = [
   {
     key: "firstScene",
     label: "第一个场景",
-    children: [{ key: "demo01", label: "demo01" }],
+    children: [
+      { key: "demo01", label: "demo01" },
+      { key: "demo02", label: "demo02" },
+    ],
   },
 ];
 function App() {
-  const navigate = useNavigate();
   const [current, setCurrent] = useState("demo01");
   const onClick: MenuProps["onClick"] = (e) => {
     setCurrent(e.key);
   };
-  useEffect(() => {
-    navigate(current);
-  }, [current, navigate]);
 
   const [sceneCode, setSceneCode] = useState<string>(initCodeDemo1);
   const threeRef = useRef<HTMLDivElement>(null);
+  console.log("🚀 ~ App ~ threeRef:", threeRef);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null); // 存储 renderer
+  const guiRef = useRef<GUI | null>(null);
+
+  useEffect(() => {
+    if (current === "demo01") {
+      setSceneCode(initCodeDemo1);
+    } else if (current === "demo02") {
+      setSceneCode(initCodeDemo2);
+    }
+  }, [current]);
 
   useEffect(() => {
     const container = threeRef.current;
     if (!container) return;
     container.innerHTML = "";
-
-    // 1️⃣ 先清理旧的 renderer（如果存在）
-    if (rendererRef.current) {
-      rendererRef.current.dispose(); // 销毁旧的 WebGLRenderer
-      rendererRef.current = null;
-    }
 
     // 2️⃣ 初始化新场景
     try {
@@ -48,14 +53,11 @@ function App() {
         "THREE",
         "container",
         "OrbitControls",
+        "GUI",
+        "gui",
         sceneCode
       );
-      const cleanup = initScene(THREE, container, OrbitControls);
-
-      // 3️⃣ 如果返回 cleanup 函数，存储 renderer
-      if (typeof cleanup === "function") {
-        rendererRef.current = cleanup(); // 存储新的 renderer
-      }
+      initScene(THREE, container, OrbitControls, GUI, guiRef.current);
     } catch (error) {
       console.error("Scene initialization error:", error);
     }
