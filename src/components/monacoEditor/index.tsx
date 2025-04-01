@@ -8,7 +8,7 @@ type MonacoEditorProps = {
 
 const MonacoEditor: FC<MonacoEditorProps> = (props) => {
   const { code, setCode } = props;
-  const [language, setLanguage] = useState<string>("javascript");
+  const [language] = useState<string>("javascript");
 
   const handleEditorChange = (value: string | undefined) => {
     if (value !== undefined) {

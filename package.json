@@ -12,6 +12,7 @@
     "@monaco-editor/react": "^4.7.0",
     "antd": "^5.24.5",
     "antd-style": "^3.7.1",
+    "lil-gui": "^0.20.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.4.1",

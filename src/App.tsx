@@ -1,12 +1,11 @@
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
-import { useNavigate } from "react-router-dom";
 import { ThemeProvider } from "antd-style";
 import { useEffect, useRef, useState } from "react";
 import MonacoEditor from "./components/monacoEditor";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { GUI } from "three/examples/jsm/libs/lil-gui.module.min";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import GUI from 'lil-gui';
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -30,7 +29,6 @@ function App() {
 
   const [sceneCode, setSceneCode] = useState<string>(initCodeDemo1);
   const threeRef = useRef<HTMLDivElement>(null);
-  console.log("🚀 ~ App ~ threeRef:", threeRef);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null); // 存储 renderer
   const guiRef = useRef<GUI | null>(null);
 
