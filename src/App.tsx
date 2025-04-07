@@ -61,7 +61,7 @@ function App() {
 				</div>
 				<div className="flex flex-1 h-full">
 					<Routes>
-						<Route path="/demo01" element={<GuiControl />} />
+						<Route path="/guiControl" element={<GuiControl />} />
 					</Routes>
 				</div>
 			</div>
