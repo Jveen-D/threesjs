@@ -3,6 +3,7 @@ import { Button, Menu } from "antd";
 import { ThemeProvider } from "antd-style";
 import React, { useState } from "react";
 import GuiControl from "./pages/GuiControl";
+import CameraHelper from "./pages/CameraHelper";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 
@@ -11,15 +12,21 @@ type MenuItem = Required<MenuProps>["items"][number];
 const items: MenuItem[] = [
 	{
 		key: "/guiControl",
-		label: "GUI调试"
+		label: "GUI调试",
+	},
+	{
+		key: "/cameraHelper",
+		label: "理解视锥体",
 	},
 ];
 
 function App() {
 	const [current, setCurrent] = useState("/guiControl");
 
-	const [collapsed, setCollapsed] = useState(localStorage.getItem("collapsed") === "true");
-  
+	const [collapsed, setCollapsed] = useState(
+		localStorage.getItem("collapsed") === "true",
+	);
+
 	const toggleCollapsed = () => {
 		setCollapsed(!collapsed);
 	};
@@ -46,7 +53,7 @@ function App() {
 					<Button
 						type="primary"
 						onClick={toggleCollapsed}
-						style={{ width: '100%',marginBottom: 16 }}
+						style={{ width: "100%", marginBottom: 16 }}
 					>
 						{collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 					</Button>
@@ -56,12 +63,13 @@ function App() {
 						defaultOpenKeys={["firstScene"]}
 						mode="inline"
 						items={items}
-            inlineCollapsed={collapsed}
+						inlineCollapsed={collapsed}
 					/>
 				</div>
 				<div className="flex flex-1 h-full">
 					<Routes>
 						<Route path="/guiControl" element={<GuiControl />} />
+						<Route path="/cameraHelper" element={<CameraHelper />} />
 					</Routes>
 				</div>
 			</div>
