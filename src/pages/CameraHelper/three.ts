@@ -14,32 +14,29 @@ export default class {
     gui: GUI;
     constructor(props: ThreeClassProps) {
         this.wrapperRef = props.wrapperRef;
-        this.scene = new THREE.Scene();
-        this.renderer = new THREE.WebGLRenderer();
-        this.camera
-        this.controls
-        this.gui = new GUI();
-    }
-    init() {
         const width = this.wrapperRef.current?.clientWidth as number;
         const height = this.wrapperRef.current?.clientHeight as number;
+        this.scene = new THREE.Scene();
+        this.renderer = new THREE.WebGLRenderer();
+        this.gui = new GUI();
 
         this.camera = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
         this.camera.position.set(200, 200, 200);
         this.camera.lookAt(0, 0, 0);
-
         this.renderer.setSize(width, height)
-
         this.renderer.render(this.scene, this.camera);
-
         this.wrapperRef.current?.appendChild(this.renderer.domElement);
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+        
+        this.init();
         const render = () => {
             this.renderer.render(this.scene, this.camera as THREE.Camera);
             requestAnimationFrame(render);
         }
 
         render();
+    }
+    init() {
 
         const camera2 = new THREE.PerspectiveCamera(20, 16 / 9, 100, 300);
         const cameraHelper = new THREE.CameraHelper(camera2);
@@ -57,14 +54,6 @@ export default class {
         }).onChange(onChange);
         this.gui.add(camera2, 'near', 0, 300).onChange(onChange);
         this.gui.add(camera2, 'far', 300, 800).onChange(onChange);
-
-
-        return {
-            renderer: this.renderer,
-            scene: this.scene,
-            camera: this.camera,
-            controls: this.controls
-        }
 
     }
 }

@@ -4,6 +4,7 @@ import { ThemeProvider } from "antd-style";
 import React, { useState } from "react";
 import GuiControl from "./pages/GuiControl";
 import CameraHelper from "./pages/CameraHelper";
+import BufferGeometry from "./pages/BufferGeometry";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 
@@ -17,6 +18,10 @@ const items: MenuItem[] = [
 	{
 		key: "/cameraHelper",
 		label: "理解视锥体",
+	},
+	{
+		key: "/bufferGeometry ",
+		label: "顶点生成几何体",
 	},
 ];
 
@@ -70,6 +75,7 @@ function App() {
 					<Routes>
 						<Route path="/guiControl" element={<GuiControl />} />
 						<Route path="/cameraHelper" element={<CameraHelper />} />
+						<Route path="/bufferGeometry" element={<BufferGeometry />} />
 					</Routes>
 				</div>
 			</div>
