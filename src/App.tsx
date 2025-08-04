@@ -1,12 +1,13 @@
+import BufferGeometry from "@/pages/BufferGeometry";
+import CameraHelper from "@/pages/CameraHelper";
+import GuiControl from "@/pages/GuiControl";
+import SphereGeometry from "@/pages/SphereGeometry";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
 import { ThemeProvider } from "antd-style";
 import React, { useState } from "react";
-import GuiControl from "./pages/GuiControl";
-import CameraHelper from "./pages/CameraHelper";
-import BufferGeometry from "./pages/BufferGeometry";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -21,6 +22,10 @@ const items: MenuItem[] = [
 	},
 	{
 		key: "/bufferGeometry ",
+		label: "顶点生成几何体",
+	},
+	{
+		key: "/SphereGeometry ",
 		label: "顶点生成几何体",
 	},
 ];
@@ -76,6 +81,7 @@ function App() {
 						<Route path="/guiControl" element={<GuiControl />} />
 						<Route path="/cameraHelper" element={<CameraHelper />} />
 						<Route path="/bufferGeometry" element={<BufferGeometry />} />
+						<Route path="/SphereGeometry" element={<SphereGeometry />} />
 					</Routes>
 				</div>
 			</div>
