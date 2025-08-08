@@ -1,7 +1,8 @@
 import BufferGeometry from "@/pages/BufferGeometry";
 import CameraHelper from "@/pages/CameraHelper";
+import Earth from "@/pages/Earth";
 import GuiControl from "@/pages/GuiControl";
-import SphereGeometry from "@/pages/SphereGeometry";
+import LoadObj from "@/pages/LoadObj";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
@@ -25,8 +26,12 @@ const items: MenuItem[] = [
 		label: "顶点生成几何体",
 	},
 	{
-		key: "/SphereGeometry ",
-		label: "顶点生成几何体",
+		key: "/earth ",
+		label: "地球",
+	},
+	{
+		key: "/loadObj ",
+		label: "加载obj文件",
 	},
 ];
 
@@ -81,7 +86,8 @@ function App() {
 						<Route path="/guiControl" element={<GuiControl />} />
 						<Route path="/cameraHelper" element={<CameraHelper />} />
 						<Route path="/bufferGeometry" element={<BufferGeometry />} />
-						<Route path="/SphereGeometry" element={<SphereGeometry />} />
+						<Route path="/Earth" element={<Earth />} />
+						<Route path="/loadObj" element={<LoadObj />} />
 					</Routes>
 				</div>
 			</div>
