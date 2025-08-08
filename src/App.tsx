@@ -3,6 +3,7 @@ import CameraHelper from "@/pages/CameraHelper";
 import Earth from "@/pages/Earth";
 import GuiControl from "@/pages/GuiControl";
 import LoadObj from "@/pages/LoadObj";
+import Light from "@/pages/light";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
@@ -32,6 +33,10 @@ const items: MenuItem[] = [
 	{
 		key: "/loadObj ",
 		label: "加载obj文件",
+	},
+	{
+		key: "/light ",
+		label: "发光",
 	},
 ];
 
@@ -88,6 +93,7 @@ function App() {
 						<Route path="/bufferGeometry" element={<BufferGeometry />} />
 						<Route path="/Earth" element={<Earth />} />
 						<Route path="/loadObj" element={<LoadObj />} />
+						<Route path="/Light" element={<Light />} />
 					</Routes>
 				</div>
 			</div>
