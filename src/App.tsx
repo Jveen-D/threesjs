@@ -1,9 +1,12 @@
 import BufferGeometry from "@/pages/BufferGeometry";
 import CameraHelper from "@/pages/CameraHelper";
 import Earth from "@/pages/Earth";
+import EarthThreeDemo from "@/pages/EarthThreeDemo";
 import GuiControl from "@/pages/GuiControl";
 import LoadObj from "@/pages/LoadObj";
+import HalfLight from "@/pages/halfLight";
 import Light from "@/pages/light";
+import TextAround from "@/pages/textAround";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
@@ -31,12 +34,24 @@ const items: MenuItem[] = [
 		label: "地球",
 	},
 	{
+		key: "/earthThreeDemo ",
+		label: "地球ThreeDemo",
+	},
+	{
 		key: "/loadObj ",
 		label: "加载obj文件",
 	},
 	{
 		key: "/light ",
 		label: "发光",
+	},
+	{
+		key: "/halfLight ",
+		label: "半发光",
+	},
+	{
+		key: "/textAround ",
+		label: "文字环绕",
 	},
 ];
 
@@ -92,8 +107,11 @@ function App() {
 						<Route path="/cameraHelper" element={<CameraHelper />} />
 						<Route path="/bufferGeometry" element={<BufferGeometry />} />
 						<Route path="/Earth" element={<Earth />} />
+						<Route path="/earthThreeDemo" element={<EarthThreeDemo />} />
 						<Route path="/loadObj" element={<LoadObj />} />
 						<Route path="/Light" element={<Light />} />
+						<Route path="/halfLight" element={<HalfLight />} />
+						<Route path="/textAround" element={<TextAround />} />
 					</Routes>
 				</div>
 			</div>
